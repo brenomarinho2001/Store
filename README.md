@@ -45,7 +45,7 @@ Breno Oliveira Marinho, 499496, Design Digital, Antônio Fernando de Araújo Cos
 | --- | --- | --- | --- | --- |
 | Usuário |  |  |  |  |
 | Postagem | X  | X |  X | X |
-| Comentário | X |  X  | x | x |
+| Comentário | X |  X  | X | X |
 
 > Lembre-se que é necessário implementar o CRUD de pelo menos duas entidades.
 
