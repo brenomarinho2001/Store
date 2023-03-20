@@ -1,12 +1,12 @@
-# Manga Store
+# Forum
 
-Uma loja online destinada a vendas de Mangás.
+Uma Forum para profissionais se comunicarem.
 
 Para executar este projeto siga os passos descritos no arquivo [passo-a-passo](passo-a-passo.md)
 
 ## Membros da equipe
 
-Breno Oliveira Marinho, 499496, Design Digital, Antônio Fernando de Araújo Costa - 494422
+Breno Oliveira Marinho, 499496, Design Digital, Antônio Fernando de Araújo Costa - 494422 - Engenharia de Software 
 
 ## Papéis ou tipos de usuário da aplicação
 
@@ -17,15 +17,14 @@ Breno Oliveira Marinho, 499496, Design Digital, Antônio Fernando de Araújo Cos
 ## Entidades ou tabelas do sistema
 
 - Usuário
-- Mangá
+- Postagem 
 - Comentário
 
 ## Principais funcionalidades da aplicação
 
-- Usuário não registrador poderão ver os mangá e os comentários feitos por usuários registrados.
-- Usuário registrador pode listar os mangás e seus detalhes, assim como usuários não registrados. 
-Adicionalmente, eles podem escrever comentários sobre os mangás.
-- O adminstrador da loja pode: adicionar, remover e editar os mangás.
+- Usuário não registrado poderá ver as postagens mas não pode participar das postagens.
+- Usuário registrado pode comentar nos foruns e mudar seu nome. 
+- O adminstrador pode adicionar, remover e editar as postegens do forúm.
 
 ## Tecnologias e frameworks utilizados
 
