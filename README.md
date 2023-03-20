@@ -1,6 +1,6 @@
-# Forum
+# Fórum
 
-Uma Forum para profissionais se comunicarem.
+Uma Fórum para formando se comunicarem com profissionais.
 
 Para executar este projeto siga os passos descritos no arquivo [passo-a-passo](passo-a-passo.md)
 
