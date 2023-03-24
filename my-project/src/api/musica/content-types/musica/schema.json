@@ -4,7 +4,8 @@
   "info": {
     "singularName": "musica",
     "pluralName": "musicas",
-    "displayName": "Musica"
+    "displayName": "Postagem",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -13,6 +14,16 @@
   "attributes": {
     "nome": {
       "type": "string"
+    },
+    "desc": {
+      "type": "richtext",
+      "required": true
+    },
+    "comentarios": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::comentario.comentario",
+      "mappedBy": "postagem"
     }
   }
 }
