@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * musica router
+ * postagem router
  */
 
 const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = createCoreRouter('api::musica.musica');
+module.exports = createCoreRouter('api::postagem.postagem');

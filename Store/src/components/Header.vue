@@ -1,8 +1,9 @@
 <template>
     <header>
-
+        <!-- ic:baseline-chat -->
     <div class="header-div">
-        <RouterLink to="/"><img src="../assets/logo.svg" height="30" class="item"/></RouterLink>
+        <RouterLink to="/"><iconify-icon icon="mdi:rabbit" style="font-size:35px;" class="item"></iconify-icon>
+</RouterLink>
     <nav class="itens-header">
         
         <RouterLink to="/" class="item">Postagens</RouterLink>
@@ -17,7 +18,7 @@
 
 <script>
 
-
+import 'iconify-icon';
 export default ({
   name:'Header'
 })

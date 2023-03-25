@@ -4,26 +4,30 @@
   "info": {
     "singularName": "comentario",
     "pluralName": "comentarios",
-    "displayName": "Comentario"
+    "displayName": "comentario",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
-    "users_permissions_user": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "comentarios"
+    "nome": {
+      "type": "string"
     },
     "desc": {
-      "type": "richtext"
+      "type": "text"
     },
     "postagem": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::musica.musica",
+      "target": "api::postagem.postagem",
+      "inversedBy": "comentarios"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
       "inversedBy": "comentarios"
     }
   }

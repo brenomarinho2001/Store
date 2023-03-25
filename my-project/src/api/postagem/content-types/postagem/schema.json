@@ -1,11 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "musicas",
+  "collectionName": "postagems",
   "info": {
-    "singularName": "musica",
-    "pluralName": "musicas",
-    "displayName": "Postagem",
-    "description": ""
+    "singularName": "postagem",
+    "pluralName": "postagems",
+    "displayName": "Postagem"
   },
   "options": {
     "draftAndPublish": false
@@ -16,8 +15,7 @@
       "type": "string"
     },
     "desc": {
-      "type": "richtext",
-      "required": true
+      "type": "text"
     },
     "comentarios": {
       "type": "relation",

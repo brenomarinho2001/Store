@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * musica service
+ * postagem service
  */
 
 const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = createCoreService('api::musica.musica');
+module.exports = createCoreService('api::postagem.postagem');

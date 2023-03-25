@@ -5,27 +5,29 @@ import { defineComponent, ref } from 'vue'
 
   export default({
     name:"Postagens",
-    setup(){
-      
-      const musicas = ref([])
-
-      const fetchMusicas = async() => api.get("http://localhost:1337/api/musicas").then((response) =>(
-        musicas.value = response.data.data
-        
-      ))
-
-      onMounted(fetchMusicas);
-
-      return {musicas}
-      
-    },
     data(){
       return{
         names: ['bruce','maria'],
         loading : true,
+        id:this.$route.params.id,
+        nome:this.$route.query.nome,
+        desc:this.$route.query.desc,
+
         
       }
-    }
+    },
+    setup() {
+        const musicas = ref([]);
+        const coment = ref([]);
+        const fetchMusicas = async () => api.get("http://localhost:1337/api/postagems?populate=*").then((response) => (musicas.value = response.data.data,
+            coment.value = response.data.data[0].attributes.comentarios));
+        onMounted(fetchMusicas);
+        return { musicas };
+        
+    },
+    
+
+    
   })
 
 
@@ -33,13 +35,16 @@ import { defineComponent, ref } from 'vue'
 
 <template>
   <div style="flex: 1 0;min-height: 100px;">
-    <h2>Nome da Página:</h2>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, aperiam facilis maiores ducimus voluptates ab voluptate id ullam odio necessitatibus amet ex totam hic quo saepe, aliquid repellat laudantium rerum! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas quaerat, aspernatur recusandae ipsa modi optio. Debitis facilis natus accusamus asperiores dolorem optio, at quas velit voluptas saepe sit ipsam suscipit!</p>
+    <p>{{ id }}</p>
+    <h2>{{nome}}:</h2>
+    <p>{{ desc }}</p>
+    <p>{{ musicas }}</p>
     <br>
     <p class="coment">Comentários:</p>
     <div class="blococomentario">
-      <h3>Nome usuário:</h3>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius repudiandae fuga, voluptas itaque perspiciatis consectetur temporibus quos illo, blanditiis dignissimos quisquam illum est maiores. Non culpa alias maxime. Corporis, doloremque!</p>
+      
+      
+      
     </div>
   </div>
 </template>

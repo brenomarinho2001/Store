@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * musica controller
+ * postagem controller
  */
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('api::musica.musica');
+module.exports = createCoreController('api::postagem.postagem');
