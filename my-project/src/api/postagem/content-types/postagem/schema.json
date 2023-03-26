@@ -4,7 +4,8 @@
   "info": {
     "singularName": "postagem",
     "pluralName": "postagems",
-    "displayName": "Postagem"
+    "displayName": "Postagem",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -22,6 +23,11 @@
       "relation": "oneToMany",
       "target": "api::comentario.comentario",
       "mappedBy": "postagem"
+    },
+    "views": {
+      "type": "integer",
+      "default": 0,
+      "required": true
     }
   }
 }

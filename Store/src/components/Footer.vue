@@ -3,7 +3,7 @@
 
     <div>
 
-    <p>Footer</p>
+    <p>By Breno O.Marinho e Antônio Fernando </p>
     </div>
     </footer>
 </template>
@@ -25,5 +25,6 @@ export default ({
         color: white;
         padding: 30px;
         text-align: center;
+        background-color: #1f1c23;
     }
 </style>

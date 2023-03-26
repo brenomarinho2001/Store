@@ -52,7 +52,7 @@
     <RouterView />
 
     <Footer/> -->
-    <iconify-icon icon="mdi:pen" style="font-size:20px;" class="item" @click="mostrarOuNao()"></iconify-icon>
+    <iconify-icon icon="mdi:pen" style="font-size:20px;color: white;" class="item" @click="mostrarOuNao()" ></iconify-icon>
 
     <Transition name="modal" v-if="open">
       <div class="modal-bg">

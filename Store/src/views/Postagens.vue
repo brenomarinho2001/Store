@@ -66,10 +66,10 @@ export default ({
 
     <div v-if="loading">
       <div style="display: flex;align-items: center;justify-content: center;">
-        <iconify-icon icon="eva:people-outline" style="font-size:40px;"></iconify-icon>
+        <iconify-icon icon="eva:people-outline" style="font-size:40px;color:#eaeaea"></iconify-icon>
 
-        <h1 class="titulopostagens">Página de Fórums</h1>
-        <iconify-icon icon="material-symbols:add-circle" style="font-size:35px" @click="mostrarOuNao()" class="createadd" ></iconify-icon>
+        <h1 class="titulopostagens">Fóruns</h1>
+        <iconify-icon icon="material-symbols:add-circle" style="font-size:35px;color: #eaeaea;" @click="mostrarOuNao()" class="createadd" ></iconify-icon>
 
       </div>
       
@@ -78,7 +78,6 @@ export default ({
       <div class="blocoforuns">
         <!-- <p>Loading...</p> -->
       <div v-if="criar">
-      <h2 style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;border-top: 1px;border-top-color: black; border-top-style: solid;width: 100%;text-align: center;margin-top: 10px;padding-top: 10px;">Criar fórum:</h2>
 
       <input type="text"  v-model="nome_forum" class="buttoncreate" placeholder="Escreva o nome do Fórum..">
       <input type="text" v-model="desc_forum" maxlength="40" class="buttoncreate" placeholder="Escreva uma descrição para o Fórum..">
@@ -101,10 +100,11 @@ export default ({
 
          -->
          <div style="display: flex;justify-content: center;">
-          <iconify-icon icon="ph:chats-circle-duotone" style="font-size:25px;margin-right: 5px;" @click="mostrarOuNao()"></iconify-icon>
+          <iconify-icon icon="ion:chatbubbles-sharp" style="font-size:25px;margin-right: 5px;color: #eaeaea;" @click="mostrarOuNao()"></iconify-icon>
 
           
-          <PostagemCard :nome="m.attributes.nome" :desc="m.attributes.desc" :id="m.id" :coment="m.attributes.comentarios"/>
+
+          <PostagemCard :nome="m.attributes.nome" :desc="m.attributes.desc" :id="m.id" :coment="m.attributes.comentarios" :visu="m.attributes.views"/>
         </div>
 
 
@@ -118,16 +118,16 @@ export default ({
 </template>
 
 <style scoped>
+
+
 .blocopostagem {
-  border-width: 1px;
-  border-color: black;
-  border-style: solid;
-  border-radius: 5px;
+
   margin: 10px;
   width: 90%;
   padding: 10px;
-
-
+  min-height: 120px;
+  background-color: #332f35;
+  border-radius: 20px;
 
   display: flex;
 
@@ -163,11 +163,12 @@ a:-webkit-any-link {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  
 }
 
 .itemforum {
   text-decoration: none;
-  color: black;
+  color: white;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-style: italic;
   font-size: 14px;
@@ -175,11 +176,14 @@ a:-webkit-any-link {
 
 .item {
   cursor: pointer;
+  color:#eaeaea
 }
 
 .titulopostagens {
   margin: 5px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 50px;
+  color:#eaeaea
 }</style>
 
 

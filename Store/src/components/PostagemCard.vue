@@ -1,23 +1,30 @@
 <template>
     <div style="display:flex;width: 100%;justify-content: space-between;">
-            <div>
-            <RouterLink :to="{name: 'forumpage',params:{id:id},query:{nome:nome,desc:desc}}" class="itemforum">
-                
-              <h2 class="titulo">Nome Fórum: {{ nome }}</h2>
-              <p>{{ desc }}</p>
+        <div style="display: flex;">
+            <RouterLink :to="{ name: 'forumpage', params: { id: id } }" class="itemforum">
+
+                <h2 class="titulo">{{ nome }}</h2>
+                <p>{{ desc }}</p>
+                <br>
+                <!-- ic:round-remove-red-eye -->
+                <div style="display: flex;align-items: center">
+                    <iconify-icon icon="ic:round-remove-red-eye" style="font-size:20px;" class="item"
+                        @click='excluirForum(id)'></iconify-icon>
+                    <p style="text-align: center;">{{ visu }}</p>
+                </div>
             </RouterLink>
-            </div>
-            
-            <div>
-            <Modal :ide='id'/>
+        </div>
 
-            <iconify-icon icon="mdi:trash" style="font-size:20px;" class="item" @click='excluirForum(id)'></iconify-icon>
-            </div>   
-            
+        <div>
+            <Modal :ide='id' />
 
-          
+            <iconify-icon icon="mdi:trash" style="font-size:20px;color:white" class="item" @click='excluirForum(id)'></iconify-icon>
+        </div>
 
-          
+
+
+
+
 
 
     </div>
@@ -28,24 +35,25 @@ import 'iconify-icon';
 import axios from 'axios'
 import Modal from '../components/Modal.vue'
 export default {
-    name:'Postagem',
-    components:{
+    name: 'Postagem',
+    components: {
         Modal
     },
-    props:{
-        nome:'String',
+    props: {
+        nome: 'String',
         desc: 'String',
-        id:'String',
-        coment:"String"
+        id: 'String',
+        coment: "String",
+        visu: 'Number'
     },
-    methods:{
-        excluirForum(id){
-            
+    methods: {
+        excluirForum(id) {
+
             axios.delete(`http://localhost:1337/api/postagems/${id}`).then((response) => {
                 console.log("oi")
                 document.location.reload(true);
             });
-            
+
         }
     }
 
@@ -56,21 +64,28 @@ export default {
 
 
 <style scoped>
-    .itemforum {
+*{
+    color:white
+}
+.itemforum {
     text-decoration: none;
-    color: black;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #eaeaea;
+
     font-style: italic;
-    font-size: 14px;
-    }
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 
-    .itemforum p{
-        font-size: 12px;
-        padding-right: 30px;
-    }
+}
 
-    .item {
+.itemforum p {
+    font-size: 15px;
+
+}
+
+.item {
     cursor: pointer;
-    
-    }
+
+}
 </style>

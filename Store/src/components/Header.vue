@@ -27,7 +27,7 @@ export default ({
 <style scoped>
     header{
         width: 100%;
-        background-color: #222;
+        background-color: #1f1c23;
 
     }
     .itens-header{
@@ -51,6 +51,11 @@ export default ({
         padding-right: 10px;
         text-decoration: none;
         color: white;
+        background-color: #332f35;
+
+        border-radius: 5px;
+        
+        text-align: center;
         font-family:'Courier New', Courier, monospace;
         
     }
