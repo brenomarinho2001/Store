@@ -46,20 +46,19 @@
 
 
 <template>
-  <div class="modalgeral">
+  <div class="modalgeral" >
     <!-- <Header/>
 
     <RouterView />
 
     <Footer/> -->
-    <iconify-icon icon="mdi:pen" style="font-size:20px;color: white;" class="item" @click="mostrarOuNao()" ></iconify-icon>
+    <iconify-icon icon="mdi:pen" style="font-size:20px;color: white;;" class="item" @click="mostrarOuNao()" ></iconify-icon>
 
     <Transition name="modal" v-if="open">
       <div class="modal-bg">
         <div class="modal" ref="modal">
-          <h2>Nome:</h2>
           <input type="text" placeholder="escreva o novo nome" v-model="nomenovo">
-          <h2>Descrição:</h2>
+
           <input type="text" placeholder="escreva a nova descrição" v-model="descnovo">
 
           <button v-on:click="enviarDados(ide,nomenovo,descnovo)" >Atualizar</button>
@@ -76,7 +75,17 @@
   .item{
     cursor: pointer;
   }
- 
+  
+  .modal{
+    padding-bottom: 20px;
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  .modalgeral{
+    margin-left: 10px
+  }
 
 
 </style>

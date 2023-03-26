@@ -15,10 +15,10 @@
             </RouterLink>
         </div>
 
-        <div>
+        <div style="display: flex;">
             <Modal :ide='id' />
 
-            <iconify-icon icon="mdi:trash" style="font-size:20px;color:white" class="item" @click='excluirForum(id)'></iconify-icon>
+            <iconify-icon icon="mdi:trash" style="font-size:20px;color:white;margin-left: 15px;margin-right: 15px;" class="item" @click='excluirForum(id)'></iconify-icon>
         </div>
 
 
