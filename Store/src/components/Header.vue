@@ -34,7 +34,7 @@ export default ({
   data(){
     return{
         logado: false,
-        usuario:''
+        usuario:localStorage.getItem('username')
   } 
   },
   methods:{
@@ -44,6 +44,8 @@ export default ({
         localStorage.removeItem('username')
         localStorage.removeItem('id')
         localStorage.removeItem('email')
+        localStorage.removeItem('token')
+        this.$router.push('/login')
     }
   },
   created(){
@@ -53,7 +55,7 @@ export default ({
         this.logado = true
         this.usuario = n
     }
-  }
+  },
   
 
 })
@@ -87,7 +89,7 @@ export default ({
         text-decoration: none;
         color: white;
         background-color: #332f35;
-
+        padding: 10px;
         border-radius: 5px;
         
         text-align: center;
@@ -104,7 +106,10 @@ export default ({
         padding-left: 1px;
         padding-right: 1px;
         color: white;
+        padding: 10px;
     }
+
+    
     
     
 </style>

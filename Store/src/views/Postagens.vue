@@ -53,7 +53,7 @@ export default ({
           console.log("oi")
         }
     },
-    components: { PostagemCard }
+    components: { PostagemCard },
 })
 
 

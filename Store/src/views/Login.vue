@@ -1,33 +1,41 @@
 
 <template>
-  <div style="flex: 1 0;color: white;" >
-        <div class="col-6 card" >
-            <div class="card-body">
-                <h5 class="card-title">Login:</h5>
-                <div class="alert alert-danger" role="alert">
+  <div style="flex: 1 0;color: white;display: flex;justify-content: center;align-items: center;" >
+        <div style="background-color: #332f35;display: flex;justify-content: center;align-items:center;flex-direction:column;border-radius: 5px;padding: 50px;width: 350px;">
+            <div style="display: flex;flex-direction: row;">
+                <iconify-icon icon="mdi:user-box" style="font-size:35px;color: #eaeaea;margin-right: 5px;"
+                    class="createadd"></iconify-icon>
+                <h2 style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-style: italic;letter-spacing: 1px;">Faça seu Login:</h2>
+                
 
                 </div>
-                
-                    <div class="mb-3">
-                        <label for="emailInput" class="form-label">Email:</label>
-                        <input type="email" class="form-control" id="emailInput" placeholder="Email@mail.com" v-model="email" >
-                        <div class="invalid-feedback">
+
+                        <div style="margin-top: 20px;display: flex;flex-direction: column;width: 100%;">
+                        <input type="text" placeholder="Email@gmail.com.." class="inputs" v-model="email"/>
+
+                        
+
+                        
+                        <!-- <div class="invalid-feedback">
                             Você deve informar um email válido.
+                        </div> -->
+
+                        
+                            <input type="password" class="inputs" id="passwordInput" v-model="senha" placeholder="digite a senha...">
+
                         </div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="passwordInput" class="form-label">Senha</label>
-                        <input type="password" class="form-control" id="passwordInput" v-model="senha" placeholder="digite a senha...">
-                        <div class="invalid-feedback">
+                    
+                        
+                        <!-- <div class="invalid-feedback">
                             A senha é um campo obrigatório.
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <button class="btn-primary" @click="login(email,senha)">Logar</button>
-                    </div>
+                        </div> -->
+                    
+                        
+                        <button class="myButton" @click="login(email,senha)">Logar</button>
+                    
                 
                 
-            </div>
+            
         </div>
     </div>
 </template>
@@ -91,7 +99,41 @@
 
 <style scoped>
     .btn-primary{
-        width: 100px;
+        width: 100%;
         height: 20px;
     }
+    .inputs{
+	width: 100%;
+	margin: 0 auto;
+	padding: 10px;
+	border-color: black;
+	margin-bottom: 10px;
+	border-radius: 50px;
+  } 
+  .myButton {
+	box-shadow: 0px 0px 0px 0px #3dc21b;
+	background-color:#332f35;
+	border-radius:28px;
+	border-style: solid;
+    border-width: 1px;
+    border-color: white;
+	display:inline-block;
+	cursor:pointer;
+	color:white;
+	font-family:Arial;
+	font-size:17px;
+	font-weight:bold;
+    width: 100%;
+	padding:5px 31px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #89898999;
+}
+
+
+
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
 </style>
