@@ -7,9 +7,19 @@
     <nav class="itens-header">
         
         <RouterLink to="/" class="item">Postagens</RouterLink>
-        <RouterLink to="/login" class="item">Login</RouterLink>
-        <span class="item-separacao">/</span>
-        <RouterLink to="/registro" class="item">Registro</RouterLink>
+        <div v-if="!logado" style="display: flex;">
+            <RouterLink to="/login" class="item">Login</RouterLink>
+            <span class="item-separacao">/</span>
+            <RouterLink to="/registro" class="item">Registro</RouterLink>
+        </div>
+        <div style="display: flex;" v-else>
+            <p class="item">{{usuario}}</p>
+            <span class="item-separacao">/</span>
+
+            <p class="item" @click="sair()">Sair</p>
+            
+        </div>
+
     </nav>
     </div>
     </header>
@@ -20,7 +30,32 @@
 
 import 'iconify-icon';
 export default ({
-  name:'Header'
+  name:'Header',
+  data(){
+    return{
+        logado: false,
+        usuario:''
+  } 
+  },
+  methods:{
+    sair(){
+        this.logado = false
+        this.usuario = ''
+        localStorage.removeItem('username')
+        localStorage.removeItem('id')
+        localStorage.removeItem('email')
+    }
+  },
+  created(){
+    
+    var n = localStorage.getItem('username')
+    if(n!=null){
+        this.logado = true
+        this.usuario = n
+    }
+  }
+  
+
 })
 </script>
 
@@ -58,6 +93,10 @@ export default ({
         text-align: center;
         font-family:'Courier New', Courier, monospace;
         
+    }
+
+    .item:hover{
+        cursor: pointer;
     }
     
     .item-separacao{

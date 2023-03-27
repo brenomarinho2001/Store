@@ -14,7 +14,7 @@ import Footer from './components/Footer.vue'
   <div class="site">
     <Header/>
 
-    <RouterView />
+    <RouterView :oi="oi"/>
 
     <Footer/>
   </div>
