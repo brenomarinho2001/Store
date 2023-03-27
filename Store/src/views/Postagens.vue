@@ -25,7 +25,7 @@ export default ({
             nome_forum: "",
             desc_forum: "",
             criar:false,
-            alert:''
+            alert:'',
         };
     },
     methods: {
@@ -50,7 +50,7 @@ export default ({
         },
         mostrarOuNao(){
           this.criar = !this.criar
-          console.log("oi")
+          var a = 'material-symbols:add-circle'
         }
     },
     components: { PostagemCard },
@@ -65,19 +65,20 @@ export default ({
   <div style="flex: 1 0;min-height: 100px;">
 
     <div v-if="loading">
-      <div style="display: flex;align-items: center;justify-content: center;">
-        <iconify-icon icon="eva:people-outline" style="font-size:40px;color:#eaeaea"></iconify-icon>
+      <div style="display: flex;align-items: center;justify-content: center;  ">
 
         <h1 class="titulopostagens">Fóruns</h1>
-        <iconify-icon icon="material-symbols:add-circle" style="font-size:35px;color: #eaeaea;" @click="mostrarOuNao()" class="createadd" ></iconify-icon>
+
+
+          <iconify-icon icon="material-symbols:expand-more" style="font-size:35px;color: #eaeaea;margin-top: 15px;" @click="mostrarOuNao()" class="createadd" ></iconify-icon>
 
       </div>
       
       <!-- material-symbols:add -->
-
+      <div>
       <div class="blocoforuns">
         <!-- <p>Loading...</p> -->
-      <div v-if="criar">
+      <div v-if="criar" style="display: flex;justify-content: center;flex-direction: column;">
 
       <input type="text"  v-model="nome_forum" class="buttoncreate" placeholder="Escreva o nome do Fórum..">
       <input type="text" v-model="desc_forum" maxlength="40" class="buttoncreate" placeholder="Escreva uma descrição para o Fórum..">
@@ -112,7 +113,7 @@ export default ({
       </div>
     </div>
     </div>
-
+  </div>
 
   </div>
 </template>
@@ -131,7 +132,7 @@ export default ({
 
   display: flex;
 
-  justify-content: center;
+  /* justify-content: center; */
   flex-direction: column;
 }
 
@@ -158,11 +159,12 @@ a:-webkit-any-link {
 }
 
 .blocoforuns{
-  width: 100%;
+  
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
   
 }
 

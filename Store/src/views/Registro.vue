@@ -28,7 +28,7 @@
                 <input type="text" class="inputs" v-model="username" placeholder="digite a username...">
                 <input type="text" class="inputs" v-model="name" placeholder="digite a seu nome...">
                 <input type="text" class="inputs" v-model="email" placeholder="digite a email...">
-                <input type="text" class="inputs" v-model="password" placeholder="digite a senha...">
+                <input type="password" class="inputs" v-model="password" placeholder="digite a senha...">
 
 
             </div>

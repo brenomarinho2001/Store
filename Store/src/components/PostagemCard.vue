@@ -65,7 +65,7 @@ export default {
 
 <style scoped>
 *{
-    color:white
+    
 }
 .itemforum {
     text-decoration: none;
