@@ -30,7 +30,7 @@ Breno Oliveira Marinho, 499496, Design Digital
 
 **Frontend:**
 
-- VueJS v3.0, Vue-Router e Pinia.
+- VueJS v3.0, Vue-Router.
 - Axios
 
 **Backend:**
@@ -43,9 +43,9 @@ Breno Oliveira Marinho, 499496, Design Digital
 
 | Entidade| Criação | Leitura | Atualização | Remoção |
 | --- | --- | --- | --- | --- |
-| Usuário |  |  |  |  |
+| Usuário | X | X |  |  |
 | Postagem | X  | X |  X | X |
-| Comentário | X |  X  | X | X |
+| Comentário | X |  X  | X |  |
 
 > Lembre-se que é necessário implementar o CRUD de pelo menos duas entidades.
 
