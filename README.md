@@ -6,7 +6,7 @@ Para executar este projeto siga os passos descritos no arquivo [passo-a-passo](p
 
 ## Membros da equipe
 
-Breno Oliveira Marinho, 499496, Design Digital, Antônio Fernando de Araújo Costa - 494422 - Engenharia de Software 
+Breno Oliveira Marinho, 499496, Design Digital
 
 ## Papéis ou tipos de usuário da aplicação
 
