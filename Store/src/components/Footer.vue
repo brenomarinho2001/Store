@@ -3,7 +3,7 @@
 
     <div>
 
-    <p>By Breno O.Marinho e Antônio Fernando </p>
+    <p>By Breno O.Marinho</p>
     </div>
     </footer>
 </template>
