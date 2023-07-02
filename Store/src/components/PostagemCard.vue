@@ -7,8 +7,8 @@
                 <p>{{ desc }}</p>
                 <br>
                 <!-- ic:round-remove-red-eye -->
-                <div style="display: flex;align-items: center">
-                    <iconify-icon icon="ic:round-remove-red-eye" style="font-size:20px;" class="item"
+                <div class="remove">
+                    <iconify-icon icon="ic:round-remove-red-eye" class="item"
                         @click='excluirForum(id)'></iconify-icon>
                     <p style="text-align: center;">{{ visu }}</p>
                 </div>
@@ -64,13 +64,14 @@ export default {
 
 
 <style scoped>
-*{
-    
+
+.remove{
+    display: flex;
+    align-items: center;
 }
 .itemforum {
     text-decoration: none;
     color: #eaeaea;
-
     font-style: italic;
     font-size: 18px;
     display: flex;

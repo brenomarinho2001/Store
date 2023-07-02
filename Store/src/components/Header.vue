@@ -2,7 +2,7 @@
     <header>
         <!-- ic:baseline-chat -->
     <div class="header-div">
-        <RouterLink to="/"><iconify-icon icon="mdi:rabbit" style="font-size:35px;" class="item"></iconify-icon>
+        <RouterLink to="/"><iconify-icon icon="mdi:rabbit" class="item"></iconify-icon>
 </RouterLink>
     <nav class="itens-header">
         
@@ -91,7 +91,7 @@ export default ({
         background-color: #332f35;
         padding: 10px;
         border-radius: 5px;
-        
+        font-size: 20px;
         text-align: center;
         font-family:'Courier New', Courier, monospace;
         

@@ -1,5 +1,3 @@
-
-
 <script lang="ts">
   import axios from 'axios'
   import { RouterLink, RouterView } from 'vue-router'
@@ -52,7 +50,7 @@
     <RouterView />
 
     <Footer/> -->
-    <iconify-icon icon="mdi:pen" style="font-size:20px;color: white;;" class="item" @click="mostrarOuNao()" ></iconify-icon>
+    <iconify-icon icon="mdi:pen" class="item" @click="mostrarOuNao()" ></iconify-icon>
 
     <Transition name="modal" v-if="open">
       <div class="modal-bg">
@@ -74,6 +72,8 @@
 
   .item{
     cursor: pointer;
+    font-size:20px;
+    color: white;
   }
   
   .modal{
