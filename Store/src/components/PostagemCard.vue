@@ -8,9 +8,8 @@
                 <br>
                 <!-- ic:round-remove-red-eye -->
                 <div class="remove">
-                    <iconify-icon icon="ic:round-remove-red-eye" class="item"
-                        @click='excluirForum(id)'></iconify-icon>
-                    <p style="text-align: center;">{{ visu }}</p>
+                    <iconify-icon icon="ic:round-remove-red-eye" class="item" @click='excluirForum(id)'></iconify-icon>
+                    <p class="visu">{{ visu }}</p>
                 </div>
             </RouterLink>
         </div>
@@ -18,7 +17,7 @@
         <div style="display: flex;">
             <Modal :ide='id' />
 
-            <iconify-icon icon="mdi:trash" style="font-size:20px;color:white;margin-left: 15px;margin-right: 15px;" class="item" @click='excluirForum(id)'></iconify-icon>
+            <iconify-icon icon="mdi:trash" class="item" @click='excluirForum(id)'></iconify-icon>
         </div>
 
 
@@ -64,11 +63,15 @@ export default {
 
 
 <style scoped>
+.visu {
+    text-align: center;
+}
 
-.remove{
+.remove {
     display: flex;
     align-items: center;
 }
+
 .itemforum {
     text-decoration: none;
     color: #eaeaea;
@@ -87,6 +90,8 @@ export default {
 
 .item {
     cursor: pointer;
-
+    color: white;
+    margin-left: 15px;
+    margin-right: 15px;
 }
 </style>

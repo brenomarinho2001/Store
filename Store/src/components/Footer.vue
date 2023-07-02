@@ -1,10 +1,8 @@
 <template>
     <footer>
-
-    <div>
-
-    <p>By Breno O.Marinho</p>
-    </div>
+        <div>
+            <p>By Breno O.Marinho</p>
+        </div>
     </footer>
 </template>
 
@@ -13,18 +11,18 @@
 
 
 export default ({
-  name:'Header'
+    name: 'Header'
 })
 </script>
 
 
 <style scoped>
-    footer{
-        flex-shrink: 0;
-        background-color: #222;
-        color: white;
-        padding: 30px;
-        text-align: center;
-        background-color: #1f1c23;
-    }
+footer {
+    flex-shrink: 0;
+    background-color: #222;
+    color: white;
+    padding: 30px;
+    text-align: center;
+    background-color: #1f1c23;
+}
 </style>

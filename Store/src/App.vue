@@ -12,28 +12,26 @@ import Footer from './components/Footer.vue'
 
 <template>
   <div class="site">
-    <Header/>
+    <Header />
 
-    <RouterView :oi="oi"/>
+    <RouterView :oi="oi" />
 
-    <Footer/>
+    <Footer />
   </div>
 </template>
 
 <style >
-  *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 
-  .site{
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-    background-color: #1f1c23;
-  }
+}
 
- 
+.site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background-color: #1f1c23;
+}
 </style>

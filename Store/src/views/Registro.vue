@@ -1,27 +1,25 @@
 
 
 <template>
-    <div style="flex: 1 0;color: white;display: flex;justify-content: center;align-items: center;">
-        <div
-            style="background-color: #332f35;display: flex;justify-content: center;align-items:center;flex-direction:column;border-radius: 5px;padding: 50px;width: 350px;">
-            <div style="display: flex;flex-direction: row;">
-                <iconify-icon icon="fluent:clipboard-note-20-filled" style="font-size:35px;color: #eaeaea;"
-                     class="createadd"></iconify-icon>
-                    <!-- mdi:user-box -->
-                <h2
-                    style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-style: italic;letter-spacing: 1px;">
+    <div class="mainregistro">
+        <div class="secondregistro">
+            <div class="registro">
+                <iconify-icon icon="fluent:clipboard-note-20-filled"
+                    class="createadd"></iconify-icon>
+                <!-- mdi:user-box -->
+                <h2 class="labelregistro">
                     Faça seu Registro:</h2>
 
 
             </div>
 
-            <div style="margin-top: 20px;display: flex;flex-direction: column;width: 100%;">
+            <div class="divregistro">
 
 
 
 
 
-            <!-- <div class="invalid-feedback">
+                <!-- <div class="invalid-feedback">
                                   Você deve informar um email válido.
                               </div> -->
 
@@ -34,7 +32,7 @@
             </div>
 
 
-        <!-- <div class="invalid-feedback">
+            <!-- <div class="invalid-feedback">
                                   A senha é um campo obrigatório.
                               </div> -->
 
@@ -93,11 +91,46 @@ export default ({
 
 
 <style scoped>
+.divregistro{
+   margin-top: 20px;
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+}
+.createadd{
+    font-size:35px;
+    color: #eaeaea;
+}
+.registro{
+    display: flex;
+    flex-direction: row;
+}
+.secondregistro{
+    background-color: #332f35;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction:column;
+    border-radius: 5px;
+    padding: 50px;
+    width: 350px;
+}
+.mainregistro{
+   flex: 1 0;
+   color: white;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
 .btn-primary {
     width: 100%;
     height: 20px;
 }
-
+.labelregistro{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-style: italic;
+    letter-spacing: 1px;
+}
 .inputs {
     width: 100%;
     margin: 0 auto;
@@ -108,22 +141,22 @@ export default ({
 }
 
 .myButton {
-	box-shadow: 0px 0px 0px 0px #3dc21b;
-	background-color:#332f35;
-	border-radius:28px;
-	border-style: solid;
+    box-shadow: 0px 0px 0px 0px #3dc21b;
+    background-color: #332f35;
+    border-radius: 28px;
+    border-style: solid;
     border-width: 1px;
     border-color: white;
-	display:inline-block;
-	cursor:pointer;
-	color:white;
-	font-family:Arial;
-	font-size:17px;
-	font-weight:bold;
+    display: inline-block;
+    cursor: pointer;
+    color: white;
+    font-family: Arial;
+    font-size: 17px;
+    font-weight: bold;
     width: 100%;
-	padding:5px 31px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #89898999;
+    padding: 5px 31px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #89898999;
 }
 
 
@@ -140,4 +173,5 @@ export default ({
 .myButton:active {
     position: relative;
     top: 1px;
-}</style>
+}
+</style>
