@@ -7,14 +7,14 @@
                 <p>{{ desc }}</p>
                 <br>
                 <!-- ic:round-remove-red-eye -->
-                <div class="remove">
+                <div class="remove" v-if="admin">
                     <iconify-icon icon="ic:round-remove-red-eye" class="item" @click='excluirForum(id)'></iconify-icon>
                     <p class="visu">{{ visu }}</p>
                 </div>
             </RouterLink>
         </div>
 
-        <div style="display: flex;">
+        <div style="display: flex;" v-if="admin">
             <Modal :ide='id' />
 
             <iconify-icon icon="mdi:trash" class="item" @click='excluirForum(id)'></iconify-icon>
@@ -43,7 +43,8 @@ export default {
         desc: 'String',
         id: 'String',
         coment: "String",
-        visu: 'Number'
+        visu: 'Number',
+        admin: false
     },
     methods: {
         excluirForum(id) {

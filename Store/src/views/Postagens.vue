@@ -125,7 +125,7 @@ export default ({
 
 
                 <PostagemCard :nome="m.attributes.nome" :desc="m.attributes.desc" :id="m.id"
-                  :coment="m.attributes.comentarios" :visu="m.attributes.views" />
+                  :coment="m.attributes.comentarios" :visu="m.attributes.views" :admin="admin"/>
               </div>
 
 
