@@ -15,7 +15,7 @@ export default ({
       mensagem: null,
       n_mensagens: 0,
       comentarios_data: null,
-      
+
 
 
 
@@ -55,19 +55,19 @@ export default ({
         desc: this.mensagem,
         postagem: this.$route.params.id,
       };
-      if (user !== null){
+      if (user !== null) {
 
-      
+
         axios.post("http://localhost:1337/api/comentarios?populate=*", {
           data: Comentario
         }).then((response) => {
           console.log(response)
           console.log(this.$route.params.id)
           this.comentarios_data.push(response.data.data)
-          
+
         });
       }
-      else{
+      else {
         this.$router.push('/login')
       }
 
@@ -125,38 +125,38 @@ export default ({
   font-style: italic;
 }
 
-.mainpage{
+.mainpage {
   flex: 1 0;
   min-height: 100px;
   display: flex;
   justify-content: center;
 }
 
-.desccomentario{
+.desccomentario {
   font-style: normal;
   font-family: Arial, Helvetica, sans-serif;
   font-style: italic;
   color: #997577;
 }
 
-.secondmainpage{
+.secondmainpage {
   margin: 10px;
   width: 90%;
   color: #eaeaea;
 }
 
-.nomecomentario{
+.nomecomentario {
   font-style: normal;
   font-family: Arial, Helvetica, sans-serif;
   color: #c3a38a;
 }
 
 
-.comentariosfor{
+.comentariosfor {
   margin-top: 30px;
 }
 
-.inputcoment{
+.inputcoment {
   margin-top: 20px;
 }
 
@@ -210,7 +210,8 @@ export default ({
 
 .blococomentario {
   margin-top: 10px;
-}</style>
+}
+</style>
 
 
 
