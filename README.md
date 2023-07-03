@@ -21,11 +21,11 @@ Breno Oliveira Marinho, 499496, Design Digital
 - Comentário
 
 ## Principais funcionalidades da aplicação
-Usuários Normais:
+##Usuários Normais:
 - Login e Registro
 - Usuário registrado pode comentar nos foruns.
 - Postar Comentários
-Usuarios Admin:
+##Usuarios Admin:
 - Login e Registro
 - O adminstrador pode adicionar, remover e editar as postegens do forúm.
 - Postar comentários
