@@ -45,7 +45,10 @@ export default ({
   methods: {
     enviarmensagem(m) {
 
-      // var datas = this.comentarios_data.push(m)
+
+      let user = localStorage.getItem('username')
+      console.log(user)
+      console.log(this.mensagem)
 
 
       // axios.put(`http://localhost:1337/api/postagems/${this.id}?populate=*`, {
