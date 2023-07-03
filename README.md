@@ -25,6 +25,7 @@ Breno Oliveira Marinho, 499496, Design Digital
 - Login e Registro
 - Usuário registrado pode comentar nos foruns.
 - Postar Comentários
+- 
 ##Usuarios Admin:
 - Login e Registro
 - O adminstrador pode adicionar, remover e editar as postegens do forúm.
