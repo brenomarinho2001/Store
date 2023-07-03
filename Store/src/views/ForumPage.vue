@@ -53,11 +53,7 @@ export default ({
       const Comentario = {
         nome: user,
         desc: this.mensagem,
-        postagem : {
-          connect: [
-        { id: 3, position: { before: 2 } },
-        ]
-        }
+        postagem: this.$route.params.id,
       };
       if (user !== null){
 
@@ -66,7 +62,13 @@ export default ({
           data: Comentario
         }).then((response) => {
           console.log(response)
+          console.log(this.$route.params.id)
+          this.comentarios_data.push(response.data.data)
+          
         });
+      }
+      else{
+        this.$router.push('/login')
       }
 
       // axios.put(`http://localhost:1337/api/postagems/${this.id}?populate=*`, {
