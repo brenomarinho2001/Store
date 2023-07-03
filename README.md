@@ -22,7 +22,7 @@ Breno Oliveira Marinho, 499496, Design Digital
 
 ## Principais funcionalidades da aplicação
 
-- Usuário não registrado poderá ver as postagens mas não pode participar das postagens.
+- Login e Registro
 - Usuário registrado pode comentar nos foruns e mudar seu nome. 
 - O adminstrador pode adicionar, remover e editar as postegens do forúm.
 
