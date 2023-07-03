@@ -50,6 +50,24 @@ export default ({
       console.log(user)
       console.log(this.mensagem)
 
+      const Comentario = {
+        nome: user,
+        desc: this.mensagem,
+        postagem : {
+          connect: [
+        { id: 3, position: { before: 2 } },
+        ]
+        }
+      };
+      if (user !== null){
+
+      
+        axios.post("http://localhost:1337/api/comentarios?populate=*", {
+          data: Comentario
+        }).then((response) => {
+          console.log(response)
+        });
+      }
 
       // axios.put(`http://localhost:1337/api/postagems/${this.id}?populate=*`, {
       // comentarios: {datas}
