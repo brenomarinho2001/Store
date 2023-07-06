@@ -36,7 +36,7 @@
                                   A senha é um campo obrigatório.
                               </div> -->
 
-
+            <p>{{ alerta }}</p>
             <button class="myButton" @click="register(name, password, email, username)">Registrar</button>
 
 
@@ -57,31 +57,42 @@ export default ({
             name: '',
             email: '',
             username: '',
-            password: ''
+            password: '',
+            alerta: ''
         }
     },
     methods: {
         async register(n, p, e, u) {
-            console.log(n, p, e, u)
-
-            // Request API.
-            axios.post('http://localhost:1337/api/auth/local/register', {
-                // Handle success.
-                name: n,
-                password: p,
-                email: e,
-                username: u
-            })
-                .then(response => {
-                    console.log('DEU CERTO!')
-                    this.$router.push('/login')
+            
+            let user = localStorage.getItem('username');
+            console.log(user)
 
 
+
+            if((n == '') || (p == '') || (e == '') || (u == '') || (n == null || p == null || e == null || u == null)){
+                this.alerta = 'Os campos estão vazios'
+            }
+            else{
+                // Request API.
+                axios.post('http://localhost:1337/api/auth/local/register', {
+                    // Handle success.
+                    name: n,
+                    password: p,
+                    email: e,
+                    username: u
                 })
-                .catch(error => {
-                    // Handle error.
-                    console.log('An error occurred:', error.response);
-                });
+                    .then(response => {
+                        console.log('DEU CERTO!')
+                        this.$router.push('/login')
+
+
+                    })
+                    .catch(error => {
+                        // Handle error.
+                        console.log('An error occurred:', error.response);
+                        this.alerta = 'ocorreu um erro'
+                    });
+            }
         }
     }
 

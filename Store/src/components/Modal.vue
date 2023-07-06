@@ -20,10 +20,14 @@ export default {
   methods: {
     enviarDados(id, n, d) {
       if (n != '' && d != '') {
+        let token = localStorage.getItem('token')
         axios.put(`http://localhost:1337/api/postagems/${id}`, {
           data: { "nome": n, "desc": d }
-        })
-          .then(response => {
+        },{
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+            }).then(response => {
             console.log(response)
             document.location.reload();
           });

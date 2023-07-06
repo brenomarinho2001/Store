@@ -4,7 +4,7 @@ import api from '../services/api'
 import { defineComponent, ref } from 'vue'
 import axios from 'axios'
 import 'iconify-icon';
-import PostagemCard from '../components/PostagemCard.vue'
+import PostagemCard2 from '../components/PostagemCard2.vue'
 
 
 
@@ -15,17 +15,22 @@ export default ({
     console.log(id)
     let usuario = await axios.get(`http://localhost:1337/api/users/`+ id)
     this.admin = usuario.data.Admin
-  
-  },
-  setup() {
-    const musicas = ref([]);
-    const coment = ref([]);
+    localStorage.setItem('admin',usuario.data.Admin)
+
+    if(this.admin == false){
+      this.$router.push('/')
+    }
+
     let user = localStorage.getItem('username');
     console.log(user)
 
     if(user == null){
       localStorage.removeItemItem('admin');
     }
+  },
+  setup() {
+    const musicas = ref([]);
+    const coment = ref([]);
     const fetchMusicas = async () => api.get("http://localhost:1337/api/postagems?populate=*").then((response) => (musicas.value = response.data.data,
       coment.value = response.data.data[0].attributes.comentarios));
     onMounted(fetchMusicas);
@@ -39,10 +44,15 @@ export default ({
       desc_forum: "",
       criar: false,
       alert: '',
-      admin: false
+      admin: false,
+      desc:'',
+      nome:'',
     };
   },
   methods: {
+    AtualizarDados(){
+      
+    },
     submitForm(n, d) {
       if (n != '' && d != '') {
         const Postagem = {
@@ -55,7 +65,7 @@ export default ({
           data: Postagem
         }).then((response) => {
           this.musicas.push(response.data.data);
-          document.location.reload();
+          
         });
       }
       else {
@@ -69,8 +79,36 @@ export default ({
       }
       
     },
+    postarforum(n,d){
+      if (n != '' && d != '') {
+        const Postagem = {
+          nome: n,
+          desc: d
+        };
+        let token = localStorage.getItem('token')
+        console.log("Nome: " + n);
+        console.log("Desc:" + d);
+        axios.post("http://localhost:1337/api/postagems?populate=*", {
+          data: Postagem
+        },{
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          }).then((response) => {
+          this.musicas.push(response.data.data);
+          this.alert = 'Deu certo!'
+        }).catch((e) => {
+          this.alert = String(e)
+        });
+      }
+      else {
+        this.alert = 'Os campos estão Vazios!'
+      }
+    },
+      
+    
   },
-  components: { PostagemCard },
+  components: { PostagemCard2 },
 })
 
 
@@ -82,16 +120,45 @@ export default ({
   <div class="mainpostagens">
 
     <div v-if="loading">
-      <div class="divpostagens">
+      <div class="mainregistro">
+        <div class="secondregistro">
+            <div class="registro">
+                <iconify-icon icon="fluent:clipboard-note-20-filled"
+                    class="createadd"></iconify-icon>
+                <!-- mdi:user-box -->
+                <h2 class="labelregistro">
+                    Faça um fórum:</h2>
 
-        <h1 class="titulopostagens">Fóruns</h1>
+
+            </div>
+
+            <div class="divregistro">
 
 
-        
 
-      </div>
 
-      <!-- material-symbols:add -->
+
+                <!-- <div class="invalid-feedback">
+                                  Você deve informar um email válido.
+                              </div> -->
+
+                <input type="text" class="inputs" v-model="nome" placeholder="digite a nome...">
+                <input type="text" class="inputs" v-model="desc" placeholder="digite a descrição...">
+            </div>
+
+
+            <!-- <div class="invalid-feedback">
+                                  A senha é um campo obrigatório.
+                              </div> -->
+
+            <p>{{ alert }}</p>
+            <button class="myButton" @click="postarforum(nome, desc)">Registrar</button>
+            
+
+
+
+        </div>
+    </div>
       <div>
         <div class="blocoforuns">
           <!-- <p>Loading...</p> -->
@@ -122,11 +189,11 @@ export default ({
          -->
               <div class="nomepost">
                 <iconify-icon icon="ion:chatbubbles-sharp" class="icon"
-                  ></iconify-icon>
+                  @click="mostrarOuNao()"></iconify-icon>
 
 
 
-                <PostagemCard :nome="m.attributes.nome" :desc="m.attributes.desc" :id="m.id"
+                <PostagemCard2 :nome="m.attributes.nome" :desc="m.attributes.desc" :id="m.id"
                   :coment="m.attributes.comentarios" :visu="m.attributes.views" :admin="admin"/>
               </div>
 
@@ -244,6 +311,89 @@ a:-webkit-any-link {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 50px;
   color: #eaeaea
+}
+.divregistro{
+   margin-top: 20px;
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+}
+.createadd{
+    font-size:35px;
+    color: #eaeaea;
+}
+.registro{
+    display: flex;
+    flex-direction: row;
+}
+.secondregistro{
+    background-color: #332f35;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction:column;
+    border-radius: 5px;
+    padding: 50px;
+    width: 350px;
+}
+.mainregistro{
+   flex: 1 0;
+   color: white;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.btn-primary {
+    width: 100%;
+    height: 20px;
+}
+.labelregistro{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-style: italic;
+    letter-spacing: 1px;
+}
+.inputs {
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px;
+    border-color: black;
+    margin-bottom: 10px;
+    border-radius: 50px;
+}
+
+.myButton {
+    box-shadow: 0px 0px 0px 0px #3dc21b;
+    background-color: #332f35;
+    border-radius: 28px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: white;
+    display: inline-block;
+    cursor: pointer;
+    color: white;
+    font-family: Arial;
+    font-size: 17px;
+    font-weight: bold;
+    width: 100%;
+    padding: 5px 31px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #89898999;
+}
+
+
+
+.myButton:hover {
+    background-color: #afafaf5d;
+
+    transition-timing-function: ease;
+    transition-duration: 1s;
+
+    width: 98%;
+}
+
+.myButton:active {
+    position: relative;
+    top: 1px;
 }
 </style>
 

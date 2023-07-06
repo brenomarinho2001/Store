@@ -10,6 +10,7 @@ const router = createRouter({
       component: HomeView
       
     },
+
     {
       path: '/login',
       name: 'login',
@@ -34,8 +35,32 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/ForumPage.vue')
-    }
+    },
+    {
+      path: '/admin',
+      name: 'admin',
+      component: () => import('../views/Adminpage.vue'),
+      meta: { requiresAdmin: true}
+    },
+    
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  
+
+  //COLOCANDO ADMIN
+  let isAdmin = localStorage.getItem('da')
+
+
+  console.log(isAdmin)
+  const requiresAdmin = to.matched.some(route => route.meta.requiresAdmin);
+
+  if (requiresAdmin && isAdmin != 'true') {
+    next('/')
+  } else {
+    next();
+  }
+});
 
 export default router

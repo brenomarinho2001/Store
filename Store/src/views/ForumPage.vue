@@ -15,7 +15,7 @@ export default ({
       mensagem: null,
       n_mensagens: 0,
       comentarios_data: null,
-
+      alerta : ''
 
 
 
@@ -25,9 +25,14 @@ export default ({
 
     let result = await axios.get("http://localhost:1337/api/postagems/" + this.id + "?populate=*")
 
+    let user = localStorage.getItem('username');
+    console.log(user)
 
+    if(user == null){
+      localStorage.removeItemItem('admin');
+    }
 
-
+    let token = localStorage.getItem('token')
     var views_mais = result.data.data.attributes.views + 1
 
     this.n_mensagens = ((result.data.data.attributes.comentarios.data).length)
@@ -36,7 +41,11 @@ export default ({
 
     axios.put(`http://localhost:1337/api/postagems/${this.id}`, {
       data: { "views": views_mais }
-    })
+    },{
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+      })
 
     this.data_nome = result.data.data.attributes.nome
     this.data_desc = result.data.data.attributes.desc
@@ -47,28 +56,35 @@ export default ({
 
 
       let user = localStorage.getItem('username')
-      console.log(user)
-      console.log(this.mensagem)
 
       const Comentario = {
         nome: user,
         desc: this.mensagem,
         postagem: this.$route.params.id,
       };
-      if (user !== null) {
+      
+      let token = localStorage.getItem('token')
+
+      console.log(this.mensagem)
+      if (user !== null && Comentario.desc != null && Comentario.desc != '') {
 
 
         axios.post("http://localhost:1337/api/comentarios?populate=*", {
           data: Comentario
-        }).then((response) => {
+        },{
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          }).then((response) => {
           console.log(response)
           console.log(this.$route.params.id)
           this.comentarios_data.push(response.data.data)
-
+          this.alerta = 'Comentários enviado!'
+          this.mensagem = null
         });
       }
       else {
-        this.$router.push('/login')
+        this.alerta = 'Os campos estão vazios'
       }
 
       // axios.put(`http://localhost:1337/api/postagems/${this.id}?populate=*`, {
@@ -99,6 +115,8 @@ export default ({
       </div>
       <div class="inputcoment">
         <input type="text" placeholder="Digite um comentario..." class="inputs" v-model="mensagem" />
+        <p>{{ mensagem }}</p>
+        <p>{{ alerta }}</p>
         <button class="btn" @click="enviarmensagem(mensagem)">Enviar</button>
       </div>
       <div class="comentariosfor" v-for="(m, i) in comentarios_data" :key="i">

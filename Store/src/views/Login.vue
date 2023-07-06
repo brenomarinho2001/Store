@@ -31,7 +31,7 @@
                             A senha é um campo obrigatório.
                         </div> -->
 
-
+            <p>{{ aviso }}</p>
             <button class="myButton" @click="login(email, senha)">Logar</button>
 
 
@@ -50,7 +50,8 @@ export default {
     data() {
         return {
             email: '',
-            senha: ''
+            senha: '',
+            aviso: '',
         }
     },
     methods: {
@@ -61,33 +62,42 @@ export default {
         },
 
         async login(e, p) {
+            let user = localStorage.getItem('username');
+            console.log(user)
 
-
-            // Request API.
-            axios.post('http://localhost:1337/api/auth/local', {
-                identifier: e,
-                password: p,
-            })
-                .then(response => {
-                    // Handle success.
-
-                    this.$router.push('/')
-                    console.log('Well done!');
-                    console.log('User profile', response.data.user);
-
-                    console.log('User token', response.data.jwt);
-                    localStorage.setItem('username', response.data.user.username);
-                    localStorage.setItem('id', response.data.user.id);
-                    localStorage.setItem('email', response.data.user.email);
-                    localStorage.setItem('token', response.data.jwt);
-
-
+            
+            if((e == '' || p == '') || (e == null || p == null)){
+                this.aviso = 'Os campos estão vazios'
+            }
+            else{
+                // Request API.
+                axios.post('http://localhost:1337/api/auth/local', {
+                    identifier: e,
+                    password: p,
                 })
-                .catch(error => {
-                    // Handle error.
-                    console.log('An error occurred:', error.response);
-                });
+                    .then(response => {
+                        // Handle success.
+
+                        this.$router.push('/')
+                        console.log('Well done!');
+                        console.log('User profile', response.data.user);
+
+                        console.log('User token', response.data.jwt);
+                        localStorage.setItem('username', response.data.user.username);
+                        localStorage.setItem('da', response.data.user.Admin);
+                        localStorage.setItem('id', response.data.user.id);
+                        localStorage.setItem('email', response.data.user.email);
+                        localStorage.setItem('token', response.data.jwt);
+
+
+                    })
+                    .catch(error => {
+                        // Handle error.
+                        
+                        this.aviso = 'ocorreu um erro'
+                    });
         }
+    }
     },
     unmounted() {
         document.location.reload();

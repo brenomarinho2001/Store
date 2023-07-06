@@ -45,6 +45,7 @@ export default ({
             localStorage.removeItem('id')
             localStorage.removeItem('email')
             localStorage.removeItem('token')
+            localStorage.removeItem('admin')
             this.$router.push('/login')
         }
     },

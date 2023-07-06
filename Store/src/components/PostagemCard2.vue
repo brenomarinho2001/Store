@@ -14,7 +14,11 @@
             </RouterLink>
         </div>
 
-      
+        <div style="display: flex;" v-if="admin">
+            <Modal :ide='id'/>
+
+            <iconify-icon icon="mdi:trash" class="item" @click='excluirForum(id)'></iconify-icon>
+        </div>
 
 
 
@@ -28,7 +32,7 @@
 <script>
 import 'iconify-icon';
 import axios from 'axios'
-import Modal from '../components/Modal.vue'
+import Modal from './Modal.vue'
 export default {
     name: 'Postagem',
     components: {
@@ -44,11 +48,24 @@ export default {
     },
     methods: {
         excluirForum(id) {
-
-            axios.delete(`http://localhost:1337/api/postagems/${id}`).then((response) => {
-                console.log("oi")
-                document.location.reload(true);
+            let token = localStorage.getItem('token')
+            console.log(token)
+            axios.delete(`http://localhost:1337/api/postagems/`+id,{
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+            })
+            .then(response => {
+                // O código aqui será executado quando a requisição for bem-sucedida
+                console.log("Requisição de exclusão bem-sucedida:", response.data);
+                
+            })
+            .catch(error => {
+                // O código aqui será executado se ocorrer um erro durante a requisição
+                console.error("Erro na requisição de exclusão:", error);
             });
+
+          
 
         }
     }
