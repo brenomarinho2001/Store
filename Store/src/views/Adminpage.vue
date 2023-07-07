@@ -158,29 +158,11 @@ export default ({
             </div>
 
             <div class="divregistro">
-
-
-
-
-
-                <!-- <div class="invalid-feedback">
-                                  Você deve informar um email válido.
-                              </div> -->
-
                 <input type="text" class="inputs" v-model="nome" placeholder="digite a nome...">
                 <input type="text" class="inputs" v-model="desc" placeholder="digite a descrição...">
             </div>
-
-
-            <!-- <div class="invalid-feedback">
-                                  A senha é um campo obrigatório.
-                              </div> -->
-
             <p>{{ alert }}</p>
             <button class="myButton" @click="postarforum(nome, desc)">Registrar</button>
-            
-
-
 
         </div>
     </div>
@@ -199,25 +181,9 @@ export default ({
         </div>
           <div class="blocopostagem" v-for="(m, i) in musicas" :key="m.id">
             <div>
-              <!-- <div style="display:flex">
-            <RouterLink to="/forumpage" class="itemforum">
-              <h2 class="titulo">{{ m.attributes.nome }}</h2>
-            </RouterLink>
-            <iconify-icon icon="mdi:pen" style="font-size:25px;" class="item"></iconify-icon>
-
-            <iconify-icon icon="mdi:trash" style="font-size:25px;" class="item"></iconify-icon>
-
-          </div>
-
-          <p>{{ m.attributes.desc }}</p>
-
-         -->
               <div class="nomepost">
                 <iconify-icon icon="ion:chatbubbles-sharp" class="icon"
                   @click="mostrarOuNao()"></iconify-icon>
-
-
-
                 <PostagemCard2 :nome="m.attributes.nome" :desc="m.attributes.desc" :id="m.id"
                   :coment="m.attributes.comentarios" :visu="m.attributes.views" :admin="admin" :atualizar="myFunction"/>
               </div>

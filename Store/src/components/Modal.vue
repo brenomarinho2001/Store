@@ -10,12 +10,14 @@ export default {
   props: {
     ide: String,
     atualizar:Function,
+    
   },
   data() {
     return {
       nomenovo: '',
       descnovo: '',
-      open: false
+      open: false,
+      status: ''
     }
   },
   methods: {
@@ -30,11 +32,16 @@ export default {
             }
             }).then(response => {
             console.log(response)
+            this.status = 'Deu certo!'
             this.atualizar()
             
           });
+      
 
 
+      }
+      else{
+        this.status = 'Os campos estão vazios'
       }
     },
 
@@ -66,7 +73,7 @@ export default {
 
           <p class="item">Descrição nova:</p>
           <input type="text" placeholder="escreva a nova descrição" v-model="descnovo" class="inputpen">
-
+          <p class="item">{{ status }}</p>
           <button v-on:click="enviarDados(ide, nomenovo, descnovo)" class="atualizar" >Atualizar</button>
         </div>
 
