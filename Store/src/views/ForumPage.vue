@@ -115,7 +115,7 @@ export default ({
       </div>
       <div class="inputcoment">
         <input type="text" placeholder="Digite um comentario..." class="inputs" v-model="mensagem" />
-        <p>{{ mensagem }}</p>
+        
         <p>{{ alerta }}</p>
         <button class="btn" @click="enviarmensagem(mensagem)">Enviar</button>
       </div>
