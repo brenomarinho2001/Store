@@ -8,7 +8,8 @@ import { onClickOutside } from '@vueuse/core'
 export default {
   name: 'Modal',
   props: {
-    ide: String
+    ide: String,
+    atualizar:Function,
   },
   data() {
     return {
@@ -29,7 +30,8 @@ export default {
             }
             }).then(response => {
             console.log(response)
-            document.location.reload();
+            this.atualizar()
+            
           });
 
 
@@ -59,11 +61,13 @@ export default {
     <Transition name="modal" v-if="open">
       <div class="modal-bg">
         <div class="modal" ref="modal">
-          <input type="text" placeholder="escreva o novo nome" v-model="nomenovo">
+          <p class="item">Nome novo:</p>
+          <input type="text" placeholder="escreva o novo nome" v-model="nomenovo" class="inputpen">
 
-          <input type="text" placeholder="escreva a nova descrição" v-model="descnovo">
+          <p class="item">Descrição nova:</p>
+          <input type="text" placeholder="escreva a nova descrição" v-model="descnovo" class="inputpen">
 
-          <button v-on:click="enviarDados(ide, nomenovo, descnovo)">Atualizar</button>
+          <button v-on:click="enviarDados(ide, nomenovo, descnovo)" class="atualizar" >Atualizar</button>
         </div>
 
       </div>
@@ -74,6 +78,7 @@ export default {
 
 <style scoped>
 .item {
+  
   cursor: pointer;
   font-size: 20px;
   color: white;
@@ -81,12 +86,21 @@ export default {
 
 .modal {
   padding-bottom: 20px;
-
+  
   display: flex;
   flex-direction: column;
 }
 
 .modalgeral {
   margin-left: 10px
+}
+
+.inputpen{
+  padding: 10px;
+}
+
+.atualizar{
+  margin-top: 10px;
+  padding: 10px;
 }
 </style>

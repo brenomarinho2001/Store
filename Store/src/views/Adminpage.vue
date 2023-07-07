@@ -28,6 +28,14 @@ export default ({
       localStorage.removeItemItem('admin');
     }
   },
+  props: {
+    myFunction: {
+      type: Function,
+      required: true,
+
+      
+    }
+  },
   setup() {
     const musicas = ref([]);
     const coment = ref([]);
@@ -50,10 +58,23 @@ export default ({
     };
   },
   methods: {
-    AtualizarDados(){
+    async myFunction() {
+    try {
+      const response = await axios.get("http://localhost:1337/api/postagems?populate=*");
+      this.musicas = response.data.data
+      console.log(this.musicas)
+      console.log('CONSEGUI!')
       
+      // Faça o que você precisa fazer com os dados retornados
+      
+      
+    } catch (error) {
+      // Trate o erro caso ocorra uma falha na solicitação
+      console.error(error);
+    }
     },
     submitForm(n, d) {
+      let token = localStorage.getItem('token')
       if (n != '' && d != '') {
         const Postagem = {
           nome: n,
@@ -63,7 +84,11 @@ export default ({
         console.log("Desc:" + d);
         axios.post("http://localhost:1337/api/postagems?populate=*", {
           data: Postagem
-        }).then((response) => {
+        },{
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          }).then((response) => {
           this.musicas.push(response.data.data);
           
         });
@@ -194,7 +219,7 @@ export default ({
 
 
                 <PostagemCard2 :nome="m.attributes.nome" :desc="m.attributes.desc" :id="m.id"
-                  :coment="m.attributes.comentarios" :visu="m.attributes.views" :admin="admin"/>
+                  :coment="m.attributes.comentarios" :visu="m.attributes.views" :admin="admin" :atualizar="myFunction"/>
               </div>
 
 

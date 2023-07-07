@@ -8,16 +8,15 @@
                 <br>
                 <!-- ic:round-remove-red-eye -->
                 <div class="remove" v-if="admin">
-                    <iconify-icon icon="ic:round-remove-red-eye" class="item" @click='excluirForum(id)'></iconify-icon>
+                    <iconify-icon icon="ic:round-remove-red-eye" class="item" click='excluirForum(id)' ></iconify-icon>
                     <p class="visu">{{ visu }}</p>
                 </div>
             </RouterLink>
         </div>
 
         <div style="display: flex;" v-if="admin">
-            <Modal :ide='id'/>
-
-            <iconify-icon icon="mdi:trash" class="item" @click='excluirForum(id)'></iconify-icon>
+            <Modal :ide='id' :atualizar="atualizar"/>
+            <iconify-icon icon="mdi:trash" class="item" @click='excluirForum(id)' ></iconify-icon>
         </div>
 
 
@@ -44,7 +43,8 @@ export default {
         id: 'String',
         coment: "String",
         visu: 'Number',
-        admin: false
+        admin: false,
+        atualizar: Function,
     },
     methods: {
         excluirForum(id) {
@@ -58,7 +58,7 @@ export default {
             .then(response => {
                 // O código aqui será executado quando a requisição for bem-sucedida
                 console.log("Requisição de exclusão bem-sucedida:", response.data);
-                
+                this.atualizar()
             })
             .catch(error => {
                 // O código aqui será executado se ocorrer um erro durante a requisição

@@ -43,6 +43,7 @@ export default ({
     };
   },
   methods: {
+   
     submitForm(n, d) {
       if (n != '' && d != '') {
         const Postagem = {
@@ -55,7 +56,7 @@ export default ({
           data: Postagem
         }).then((response) => {
           this.musicas.push(response.data.data);
-          document.location.reload();
+          
         });
       }
       else {
