@@ -29,7 +29,7 @@ export default ({
     console.log(user)
 
     if(user == null){
-      localStorage.removeItemItem('admin');
+      localStorage.removeItemItem('da');
     }
 
     let token = localStorage.getItem('token')
